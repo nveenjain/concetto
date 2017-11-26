@@ -62,9 +62,16 @@ ul{
     display: flex;
     align-items: center;
 }
+.open1 span, .open2 span{
+    font-size: 2rem;
+    cursor: pointer;
+    color:white;
+    background: linear-gradient(0deg, #2029FF 0%, #1473FF 30%, #1473FF 70%, #2029FF 100%);
+}
 .open1 span:hover, .open2 span:hover{
     cursor: pointer;
-    background: #6b5f5f;
+    color:white;
+    background:linear-gradient(0deg, grey  0%, black 30%, black 70%, grey 100%);
 }
 #left-nav, #right-nav, #content,.open1,.open2{
     border: 2px solid yellowgreen;
