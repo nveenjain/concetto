@@ -1,10 +1,29 @@
 body{
     margin:0;
+    color:white;
+}
+#main{
+    display: flex;
+    height:100vh;
 }
 ul{
     list-style: none;
     font-family: 'Spectral SC', serif;
+    color:#3579e8;
 }
-#left-nav{
-    margin-left:0;
+#left-nav li{
+    float:right;
+    padding-right:3px;
+    font-size: 20px;
+    font-weight: 700;
+    clear:both;
+}
+#left-nav li:hover{
+    cursor: url('select.cur'),pointer;
+    color:white;
+}
+#left-nav, #right-nav, #main{
+    border: 2px solid yellowgreen;
+    background: black;
+    cursor:url('arrow.cur'),auto;
 }
