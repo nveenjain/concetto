@@ -19,10 +19,17 @@ ul{
     font-family: 'Spectral SC', serif;
     color:#3579e8;
     padding: 0;
+    margin: 0 0;
+}
+*{
+    -webkit-transition: display 1  ;
+    -moz-transition: display 1  ;
+    transition: display 1  ;
 }
 #left-nav li {
     font-size: 20px;
     font-weight: 700;
+    text-align: center;
     flex:3;
     padding-right:3px; 
 }
@@ -42,8 +49,24 @@ ul{
 }
 #content{
     flex:5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
-#left-nav, #right-nav, #content{
+#content canvas{
+    flex:6;
+    width: 80%;
+}
+.open1, .open2{
+    display: flex;
+    align-items: center;
+}
+.open1 span:hover, .open2 span:hover{
+    cursor: pointer;
+    background: #6b5f5f;
+}
+#left-nav, #right-nav, #content,.open1,.open2{
     border: 2px solid yellowgreen;
     background: black;
     cursor:url('arrow.cur'),auto;
