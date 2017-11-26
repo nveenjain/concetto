@@ -1,0 +1,10 @@
+body{
+    margin:0;
+}
+ul{
+    list-style: none;
+    font-family: 'Spectral SC', serif;
+}
+#left-nav{
+    margin-left:0;
+}
