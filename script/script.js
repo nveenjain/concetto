@@ -1,5 +1,6 @@
 'use strict';
-
+//Initialize a flag variable to check whether to draw or not?
+let flag = 0;
 //Initially set the height and width of canvas
 document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
 document.querySelector('canvas').height = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('height'));
@@ -7,8 +8,11 @@ document.querySelector('canvas').height = parseFloat(window.getComputedStyle(doc
 //Set its width and height according to screensize
 window.addEventListener('resize',function resize_canvas() {
     document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
-    draw_initial();
+    if(!flag){
+        draw_initial();
+    }
 });
+
 
 // Select all elements which open/close the given menu list
 document.querySelector('.open1 span').addEventListener('click', function () {
@@ -59,10 +63,12 @@ if (pointer.y + 20 > document.querySelector('canvas').height)
 else if (pointer.y - 20 <= 48)
     pointer.y = document.querySelector('canvas').height + 50; 
 
+
+let canvas = document.querySelector('canvas');
+let ctx = canvas.getContext('2d');
 //Initially draw every material on canvas (Circles and name)
 function draw_initial(department, icon){
-    let canvas = document.querySelector('canvas');
-    let ctx = canvas.getContext('2d');
+
     let width = canvas.width;
     let height = canvas.height;
     
@@ -99,29 +105,25 @@ function draw_initial(department, icon){
         y2 -= 40;
     else if (y2 - 20 <= 48)
         y2 += 50;
-
     //Check if any two doesn't collide initially
     if(Math.sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2))<(40)){
-        console.log("draw called");
         return draw_initial(department, icon);
     }
     if (Math.sqrt((pointer.x - x2) * (pointer.x - x2) + (pointer.y - y2) * (pointer.y - y2)) < (40)) {
-        console.log("draw called");
         return draw_initial(department, icon);
     }
     if (Math.sqrt((pointer.x - x1) * (pointer.x - x1) + (pointer.y - y1) * (pointer.y - y1)) < (40)) {
-        console.log("draw called");
         return draw_initial(department, icon);
     }
 
-    draw(department, icon);
+    //check for flag
+    if (!flag)
+        draw(department, icon);
     
 
 }
 
 function draw(department, icon){
-    let canvas = document.querySelector('canvas');
-    let ctx = canvas.getContext('2d');
     let width = canvas.width;
     let height = canvas.height;
     ctx.fillStyle = 'white';
@@ -144,34 +146,64 @@ function draw(department, icon){
     ctx.font = '48px Spectral SC';
     ctx.fillText('Hello World!', 10, 50);
 }
-
+//check collision
+function check_collision(){
+    let height = canvas.height;
+    let width = canvas.width;
+    if (Math.sqrt((pointer.x - x2) * (pointer.x - x2) + (pointer.y - y2) * (pointer.y - y2)) < (35)) {
+        console.log('hi');
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.save();
+        ctx.font = '48px serif';
+        ctx.fillText('Event 1', width*10/100 , height*10/100);
+        flag = 1;
+        
+    }
+    if (Math.sqrt((pointer.x - x1) * (pointer.x - x1) + (pointer.y - y1) * (pointer.y - y1)) < (35)) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.save();
+        let text_size = canvas.height>100?48:canvas.height/10;
+        ctx.font = `${text_size} serif`;
+        ctx.fillText('Event 2', width * 10 / 100, height * 10 / 100);
+        flag = 1;        
+    }
+}
 
 draw_initial();
 window.addEventListener('keydown',function move(e) {
-    console.log(e.keyCode);
-    let canvas = document.querySelector('canvas');
-    let ctx = canvas.getContext('2d');
     switch(e.keyCode){
         case 37:
             ctx.clearRect(0,0,canvas.width,canvas.height);
             (pointer.x>20)?pointer.x-=2:pointer.x;
-            draw();
+            check_collision();
+            //check for flag
+            if (!flag)
+                draw();
             break;
         case 38:
             ctx.clearRect(0, 0, canvas.width, canvas.height);        
             (pointer.y > 68) ? pointer.y-=2 : pointer.y;
-            draw();
+            check_collision();            
+            //check for flag
+            if (!flag)
+                draw();
             break;
         case 39:
             ctx.clearRect(0, 0, canvas.width, canvas.height);                    
             (document.querySelector('canvas').width - pointer.x > 20) ? pointer.x+=2 : pointer.x;        
-            draw();
+            check_collision();            
+            //check for flag
+            if (!flag)
+                draw();
             break;
         break;
         case 40:
             ctx.clearRect(0, 0, canvas.width, canvas.height);                
             (document.querySelector('canvas').height - pointer.y > 20) ? pointer.y+=2 : pointer.y;        
-            draw();
+            check_collision();            
+            //check for flag
+            if (!flag)
+                draw();
             break;
     }
     
