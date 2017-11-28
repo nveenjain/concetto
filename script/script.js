@@ -1,6 +1,14 @@
 'use strict';
 //Initialize a flag variable to check whether to draw or not?
 let flag = 0;
+
+//Lazy load all the slogans of departments
+let slogans = fetch('/data/dept_slogan.json')
+                .then(data =>data.json());
+let data, dept_avail=[],event_data=[];
+//Initialize expanded element as null and current department as null
+let expanded, dept;
+
 //Initially set the height and width of canvas
 document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
 document.querySelector('canvas').height = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('height'));
@@ -8,43 +16,76 @@ document.querySelector('canvas').height = parseFloat(window.getComputedStyle(doc
 //Set its width and height according to screensize
 window.addEventListener('resize',function resize_canvas() {
     document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
+    document.querySelector('canvas').height = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('height'));
+    //If there is a department then only draw else don't draw
+    if(dept)
     if(!flag){
         draw_initial();
-    }
+    }else check_collision();
 });
 
 
 // Select all elements which open/close the given menu list
 document.querySelector('.open1 span').addEventListener('click', function () {
     this.textContent = this.textContent === '>>' ? '<<' : '>>';
-    document.querySelector('#left-nav').style.display = document.querySelector('#left-nav').style.display == 'none' ? 'block' : 'none';
-    console.log(document.querySelector('canvas').width);
+    document.querySelector('#left-nav').style.display = window.getComputedStyle(document.querySelector('#left-nav')).getPropertyValue('display') == 'none' ? 'block' : 'none';
+    document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
+    if(!flag)
+        draw();
 
 });
 document.querySelector('.open2 span').addEventListener('click', function () {
     this.textContent = this.textContent === '>>' ? '<<' : '>>';
     document.querySelector('#right-nav').style.display = document.querySelector('#right-nav').style.display == 'none' ? 'block' : 'none';
+    document.querySelector('canvas').width = parseFloat(window.getComputedStyle(document.querySelector('canvas')).getPropertyValue('width'));
+    if (!flag)
+        draw();
+    else
+        check_collision();
+
 
 });
 
-//Initialize expanded element as null
-var expanded;
+
 //As soon as any element is clicked, then add it to expanded element variable
-document.querySelectorAll('ul li').forEach(x=>x.addEventListener('click', ()=>{
+document.querySelectorAll('#left-nav ul li').forEach(x=>x.addEventListener('click', async function check(){
+    flag = 0;    
     if (parseInt(window.getComputedStyle(x).getPropertyValue('flex')) === 3){
-        x.style.flex = 7;
-        x.querySelector('div').innerHTML = "This is gonna be best fest :)";
         if(expanded){
             expanded.querySelector('div').innerHTML = "";
             expanded.style.flex = 3;
         }
         expanded = x;
+        x.style.flex = 7;
+        dept = x.dataset.department;
+        canvas.getContext('2d').clearRect(0, 0, document.querySelector('canvas').width, document.querySelector('canvas').height);
+        draw_initial();
+        x.querySelector('div').innerHTML = "Loading";
+        if(!data)
+            data = await slogans.then(data=> data);
+        x.querySelector('div').innerHTML = `${data[dept]}`;
+
+
     }else{
         x.style.flex = 3;
         x.querySelector('div').innerHTML = "";
     }
 }));
 
+document.querySelectorAll('#right-nav ul li').forEach(x => x.addEventListener('click', async function check() {
+    if (parseInt(window.getComputedStyle(x).getPropertyValue('flex')) === 3) {
+        if (expanded) {
+            expanded.querySelector('div').innerHTML = "";
+            expanded.style.flex = 3;
+        }
+        expanded = x;
+        x.style.flex = 7;
+
+    } else {
+        x.style.flex = 3;
+        x.querySelector('div').innerHTML = "";
+    }
+}));
 //Initialize pointer and declare other variables which will be represented by icon
 var temp = Math.random() * document.querySelector('canvas').width;
 var temp2 = Math.random() * document.querySelector('canvas').height;
@@ -68,7 +109,9 @@ let canvas = document.querySelector('canvas');
 let ctx = canvas.getContext('2d');
 //Initially draw every material on canvas (Circles and name)
 function draw_initial(department, icon){
-
+    if (flag)
+        return;
+    
     let width = canvas.width;
     let height = canvas.height;
     
@@ -117,7 +160,6 @@ function draw_initial(department, icon){
     }
 
     //check for flag
-    if (!flag)
         draw(department, icon);
     
 
@@ -144,67 +186,115 @@ function draw(department, icon){
     ctx.restore();
 
     ctx.font = '48px Spectral SC';
-    ctx.fillText('Hello World!', 10, 50);
+    ctx.fillText(`${dept}`, 10, 50);
 }
 //check collision
-function check_collision(){
-    let height = canvas.height;
-    let width = canvas.width;
+async function check_collision(){
+    // let height = canvas.height;
+    // let width = canvas.width;
+    let event_data_local, dummy_data;
+    if (dept_avail.indexOf(dept) != -1) {
+        //We already loaded department
+        event_data_local = event_data[dept_avail.indexOf(dept)];
+    } else {
+        dummy_data = await fetch(`/data/${dept}.json`).then(d => d.json());
+        dept_avail.push(dept);
+        let obj = {};
+        obj[dept] = dummy_data;
+        event_data.push(obj);
+        console.log(dummy_data);
+        //Need to load department
+    }
     if (Math.sqrt((pointer.x - x2) * (pointer.x - x2) + (pointer.y - y2) * (pointer.y - y2)) < (35)) {
-        console.log('hi');
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        ctx.save();
-        ctx.font = '48px serif';
-        ctx.fillText('Event 1', width*10/100 , height*10/100);
+        // ctx.clearRect(0,0,width,height);
+        // ctx.fillText(`${event_data_local[dept].event1.title}`, width*10/100 , height*10/100);
+        let modal = document.querySelector('.modal');
+        modal.style.display = "block";
+        modal.style.opacity = "1";
+        modal.querySelector('p').innerHTML = `<h1>${event_data_local[dept].event1.title}</h1> <br /> ${event_data_local[dept].event1.abstract}`;        
+        // ctx.font = "28px Spectral SC";
+        // ctx.fillText(`${event_data_local[dept].event1.abstract}`, width*10/100 , height*10/100 + 60);
         flag = 1;
         
     }
     if (Math.sqrt((pointer.x - x1) * (pointer.x - x1) + (pointer.y - y1) * (pointer.y - y1)) < (35)) {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.save();
-        let text_size = canvas.height>100?48:canvas.height/10;
-        ctx.font = `${text_size} serif`;
-        ctx.fillText('Event 2', width * 10 / 100, height * 10 / 100);
-        flag = 1;        
+        // ctx.clearRect(0, 0, width, height);
+        // ctx.fillText(`${event_data_local[dept].event2.title}`, width * 10 / 100, height * 10 / 100);
+        let modal = document.querySelector('.modal');
+        modal.style.display = "block";
+        modal.style.opacity = "1";
+        modal.querySelector('p').innerHTML = `<h1>${event_data_local[dept].event2.title}</h1> <br /> ${event_data_local[dept].event2.abstract}`;
+        flag = 1;      
     }
 }
 
-draw_initial();
-window.addEventListener('keydown',function move(e) {
-    switch(e.keyCode){
+function move(e) {
+    if (e.keyCode === 27) {
+        flag = 0;
+        modal.style.opacity = "0";
+        modal.style.display = "none";
+    }
+    if (!dept || flag)
+        return;
+    switch (e.keyCode) {
         case 37:
-            ctx.clearRect(0,0,canvas.width,canvas.height);
-            (pointer.x>20)?pointer.x-=2:pointer.x;
-            check_collision();
-            //check for flag
             if (!flag)
-                draw();
+                (pointer.x > 20) ? pointer.x -= 2 : pointer.x;
+            check_collision();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            draw();
             break;
         case 38:
-            ctx.clearRect(0, 0, canvas.width, canvas.height);        
-            (pointer.y > 68) ? pointer.y-=2 : pointer.y;
-            check_collision();            
-            //check for flag
             if (!flag)
-                draw();
+                (pointer.y > 68) ? pointer.y -= 2 : pointer.y;
+            check_collision();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            draw();
             break;
         case 39:
-            ctx.clearRect(0, 0, canvas.width, canvas.height);                    
-            (document.querySelector('canvas').width - pointer.x > 20) ? pointer.x+=2 : pointer.x;        
-            check_collision();            
-            //check for flag
             if (!flag)
-                draw();
+                (document.querySelector('canvas').width - pointer.x > 20) ? pointer.x += 2 : pointer.x;
+            check_collision();
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            draw();
             break;
-        break;
+            break;
         case 40:
-            ctx.clearRect(0, 0, canvas.width, canvas.height);                
-            (document.querySelector('canvas').height - pointer.y > 20) ? pointer.y+=2 : pointer.y;        
-            check_collision();            
-            //check for flag
             if (!flag)
-                draw();
+                (document.querySelector('canvas').height - pointer.y > 20) ? pointer.y += 2 : pointer.y;
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            check_collision();
+            //check for flag
+            draw();
             break;
     }
-    
+
+};
+// draw_initial();
+window.addEventListener('keydown',move);
+
+
+var modal = document.getElementById('myModal');
+var span = document.getElementsByClassName("close")[0];
+span.onclick = function () {
+    flag = 0;
+    modal.style.opacity = "0";
+    modal.style.display = "none";
+}
+
+console.log(canvas.getBoundingClientRect());
+canvas.addEventListener('focus',function(e){
+    let x = (e.clientX - canvas.getBoundingClientRect().x), y = (e.clientY - canvas.getBoundingClientRect().y);
+    console.log(x-pointer.x);
+    if(x - pointer.x >0){
+            move({"keyCode":39});
+    }else{
+            move({"keyCode":37});
+    }
+
+    if(y - pointer.y > 0){
+            move({"keyCode":40});
+    }else{
+            move({"keyCode":38});
+    }
 })

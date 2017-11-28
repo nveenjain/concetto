@@ -1,5 +1,6 @@
 body{
     margin:0;
+    background:black;
     color:white;
 }
 #main{
@@ -39,10 +40,13 @@ ul{
     flex:3;    
     padding-left:3px;
 }
-
+li div{
+    font-size: 15px;
+    color:#F34605;
+}
 #left-nav li:hover, #right-nav li:hover{
     cursor: url('select.cur'),pointer;
-    color:white;
+    color: white;
 }
 #left-nav, #right-nav{
     flex:1;
@@ -53,11 +57,12 @@ ul{
     flex-direction: column;
     align-items: center;
     text-align: center;
+    height: 100%;
 }
 #content canvas{
     flex:6;
-    width: 80%;
-    height:80%;
+    width: 100%;
+    max-height: calc(100% - 100px);
 }
 .open1, .open2{
     display: flex;
@@ -71,11 +76,52 @@ ul{
 }
 .open1 span:hover, .open2 span:hover{
     cursor: pointer;
-    color:white;
+    color: #F34605;
     background:linear-gradient(0deg, grey  0%, black 30%, black 70%, grey 100%);
 }
 #left-nav, #right-nav, #content,.open1,.open2{
-    border: 2px solid yellowgreen;
-    background: black;
+    /* background: black; */
     cursor:url('arrow.cur'),auto;
+}
+
+.modal {
+    opacity: 0;
+    /* visibility: visible; */
+    display: none; 
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    -webkit-transition: opacity 2s;
+    -moz-transition: opacity 2s;
+    transition: opacity 2s;
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #000000;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    cursor: pointer;
 }

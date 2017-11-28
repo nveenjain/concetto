@@ -1,0 +1,16 @@
+{
+    "event1":{
+        "title":"This is event1",
+        "abstract":"This is the vdfxgvfdh",
+        "coordinator":"Co-ordinator name",
+        "organisers":"Organiser name",
+        "prize":"Amount"
+    },
+    "event2":{
+        "title": "This is event2",
+        "abstract": "This is the abstract",
+        "coordinator": "Co-ordinator name",
+        "organisers": "Organiser name",
+        "prize": "Amount"
+    }
+}
