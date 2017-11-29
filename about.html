@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About Us</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <link rel = 'stylesheet' href = 'style/style.css'/>
+  <link rel = 'stylesheet' href = 'style/style_about.css'/>
+  <script>
+    $(document).ready(function(){
+        setTimeout(function(){
+          $("rect:eq(0)").css({"transform": "scaleY(1)"});
+          $("line:eq(0)").css({"transform": "scale(1, 1)"});
+          $("ellipse:eq(0)").css({"transform": "scale(1, 1)"});
+          $("#content").load("data/1.txt");
+          $("#svg_5").css({"transform": "scaleX(0.2)"});
+        }, 3000);
+        setTimeout(function(){
+          $("#content").html("<img src = 'res/load.gif'/>");
+          $("rect:eq(1)").css({"transform": "scaleY(1)"});
+          $("line:eq(1)").css({"transform": "scale(1, 1)"});
+          $("ellipse:eq(1)").css({"transform": "scale(1, 1)"});
+          $("#content").load("data/2.txt");
+          $("#svg_5").css({"transform": "scaleX(0.4)"});
+        }, 6000);
+        setTimeout(function(){
+          $("#content").html("<img src = 'res/load.gif'/>");
+          $("rect:eq(2)").css({"transform": "scaleY(1)"});
+          $("line:eq(2)").css({"transform": "scale(1, 1)"});
+          $("ellipse:eq(2)").css({"transform": "scale(1, 1)"});
+          $("#content").load("data/3.txt");
+          $("#svg_5").css({"transform": "scaleX(0.6)"});
+        }, 9000);
+        setTimeout(function(){
+          $("#content").html("<img src = 'res/load.gif'/>");
+          $("rect:eq(3)").css({"transform": "scaleY(1)"});
+          $("line:eq(3)").css({"transform": "scale(1, 1)"});
+          $("ellipse:eq(3)").css({"transform": "scale(1, 1)"});
+          $("#content").load("data/4.txt");
+          $("#svg_5").css({"transform": "scaleX(0.8)"});
+        }, 12000);
+        setTimeout(function(){
+          $("#content").html("<img src = 'res/load.gif'/>");
+          $("rect:eq(4)").css({"transform": "scaleY(1)"});
+          $("line:eq(4)").css({"transform": "scale(1, 1)"});
+          $("ellipse:eq(4)").css({"transform": "scale(1, 1)"});
+          $("#content").load("data/5.txt");
+          $("line:eq(5)").css({"transform": "scale(1, 1)"});
+          $("#svg_5").css({"transform": "scaleX(1)"});
+        }, 15000);
+
+        setTimeout(function(){
+          $("rect:eq(0)").on("click", function(){
+            $("#content").html("<img src = 'res/load.gif'/>");
+            $("#content").load("data/1.txt");
+            $("#svg_5").css({"transform": "scaleX(0.2)"});
+          });
+          $("rect:eq(1)").on("click", function(){
+            $("#content").html("<img src = 'res/load.gif'/>");
+            $("#content").load("data/2.txt");
+            $("#svg_5").css({"transform": "scaleX(0.4)"});
+          });
+          $("rect:eq(2)").on("click", function(){
+            $("#content").html("<img src = 'res/load.gif'/>");
+            $("#content").load("data/3.txt");
+            $("#svg_5").css({"transform": "scaleX(0.6)"});
+          });
+          $("rect:eq(3)").on("click", function(){
+            $("#content").html("<img src = 'res/load.gif'/>");
+            $("#content").load("data/4.txt");
+            $("#svg_5").css({"transform": "scaleX(0.8)"});
+          });
+          $("rect:eq(4)").on("click", function(){
+            $("#content").html("<img src = 'res/load.gif'/>");
+            $("#content").load("data/5.txt");
+            $("#svg_5").css({"transform": "scaleX(1)"});
+          });
+        }, 18000);
+
+    });
+  </script>
+</head>
+<body>
+  <div class="modal-frame">
+    <div class="modal">
+      <div class="modal-inset" style="background:#e6e8ed;">
+        <div class="button close">
+          &#10006;
+        </div>
+  
+        <div class="modal-body">
+  
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-overlay"></div>
+
+      <div id="particles-js" style="position:fixed; z-index:-10; width:100%; top:0; height:100%; left:0;"></div>
+      <script src="script/particles.min.js"></script>
+      <script src="script/app.js"></script>
+  <div id = 'header'><h1>About</h1></div>
+  <div id = "contentWrap">
+    <svg width="1350" height="620" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <!-- Created with SVG-edit - http://svg-edit.googlecode.com/ -->
+ <defs>
+  <radialGradient id="svg_4" spreadMethod="pad">
+   <stop stop-color="#999999" offset="0"/>
+   <stop stop-color="#666666" offset="1"/>
+  </radialGradient>
+  <linearGradient id="svg_15">
+   <stop stop-color="#000000" offset="0"/>
+   <stop stop-color="#ffffff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="svg_18" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#000000" offset="0"/>
+   <stop stop-color="#ffffff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="svg_25">
+   <stop stop-color="#191919" offset="0"/>
+   <stop stop-color="#e6e6e6" offset="1"/>
+  </linearGradient>
+  <radialGradient id="svg_33" spreadMethod="pad" cx="0.5" cy="0.5" r="0.5">
+   <stop stop-color="#000000" offset="0.30341"/>
+   <stop stop-color="#ffffff" offset="1"/>
+  </radialGradient>
+  <pattern height="100" width="100" y="0" x="0" patternUnits="userSpaceOnUse" id="gridpattern">
+   <image height="100" width="100" y="0" x="0" id="svg_2"/>
+  </pattern>
+  <pattern height="100" width="100" y="0" x="0" patternUnits="userSpaceOnUse" id="gridpattern">
+   <image height="100" width="100" y="0" x="0" id="svg_3"/>
+  </pattern>
+  <linearGradient id="svg_19" y1="1" y2="1">
+   <stop stop-color="#000000" offset="0"/>
+   <stop stop-color="#ffffff" offset="1"/>
+  </linearGradient>
+  <linearGradient id="svg_20" x1="0" y1="0" x2="1" y2="0">
+   <stop stop-color="#ffffff" offset="0.78387"/>
+   <stop stop-color="grey" offset="1"/>
+  </linearGradient>
+  <linearGradient y2="0" x2="1" y1="0" x1="0" id="svg_9">
+   <stop offset="0.76434" stop-color="#000000"/>
+   <stop offset="1" stop-color="#ffffff"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <rect data-name="rect1" class="bar" style="cursor:pointer;" fill="#fff" stroke-width="2" x="343" y="452.8889" width="49" height="155.99999" id="svg_8" stroke="url(#svg_4)"/>
+  <rect data-name="rect2" class="bar" style="cursor:pointer;" fill="#fff" stroke-width="2" x="553" y="388.5185" width="51" height="220.00003" id="svg_10" stroke="url(#svg_4)"/>
+  <rect data-name="rect3" class="bar" style="cursor:pointer;" fill="#fff" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="762" y="305" width="54" height="303.99999" id="svg_11" stroke="url(#svg_4)"/>
+  <rect data-name="rect4" class="bar" style="cursor:pointer;" fill="#fff" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="971" y="277.99999" width="55" height="331.00001" id="svg_12" stroke="url(#svg_4)"/>
+  <rect data-name="rect5" class="bar" style="cursor:pointer;" fill="#fff" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="1177" y="183.99999" width="59" height="425.00001" id="svg_13" stroke="url(#svg_4)"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="155" y1="610" x2="364.99999" y2="478.00001" id="svg_14" stroke="url(#svg_15)"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="574.00001" y1="410.00001" x2="368.99999" y2="473" id="svg_16" stroke="url(#svg_19)"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="580" y1="407" x2="786.00001" y2="330" id="svg_17" stroke="url(#svg_18)"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="789" y1="327" x2="992.00003" y2="305" id="svg_22" stroke="url(#svg_25)"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="997" y1="300" x2="1201" y2="210" id="svg_26" stroke="url(#svg_15)"/>
+  <ellipse fill="url(#svg_33)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="367" cy="475" id="svg_27" rx="6" ry="7" stroke="#000000"/>
+  <ellipse fill="url(#svg_33)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="577" cy="408.5" rx="6" ry="7" id="svg_34" stroke="#000000"/>
+  <ellipse fill="url(#svg_33)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="788" cy="328.5" rx="6" ry="7" id="svg_35" stroke="#000000"/>
+  <ellipse fill="url(#svg_33)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="995" cy="303.5" rx="6" ry="7" id="svg_36" stroke="#000000"/>
+  <ellipse fill="url(#svg_33)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" cx="1203" cy="208.5" rx="6" ry="7" stroke="#000000" id="svg_37"/>
+  <line fill="none" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x1="1205" y1="206" x2="1340.99999" y2="89" id="svg_38" stroke="url(#svg_25)"/>
+  <!-- <text fill="#ffffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="143" y="383.88889" id="svg_40" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.616987183690071,0,0,0.84375,49.27083261311054,61.34374999999999) " stroke="url(#svg_4)">1992</text> -->
+  <!-- <text fill="#ffffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="237.5" y="300.11765" id="svg_41" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.6666666865348816,0,0,0.6538461446762085,69.66666251420975,130.5000034570694) " stroke="url(#svg_4)">2001</text> -->
+  <!-- <text fill="#ffffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="328" y="335" id="svg_44" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.7291666865348815,0,0,0.6538461446762085,84.33332729339598,46.69231081008911) " stroke="url(#svg_4)">2005</text> -->
+  <!-- <text fill="#ffffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="433.26316" y="220.09524" id="svg_45" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.7196970092076249,0,0,0.6880341955909017,114.18085607101696,72.57104485457855) " stroke="url(#svg_4)">2007</text> -->
+  <!-- <text fill="#ffffff" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="543.38462" y="126.85714" id="svg_46" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.7225628560748676,0,0,0.5625415164259819,142.3701161459836,59.135980653498756) " stroke="url(#svg_4)">2017</text> -->
+  <rect id="svg_1" height="0" width="0" y="-302" x="-96" opacity="0.5" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="2" stroke="url(#svg_4)" fill="none"/>
+  <a href="/"><image x="866" y="17.00002" width="252" height="191" id="svg_6" xlink:href="http://moodoptimism.com/wp-content/uploads/2016/10/14202607_1004714506340372_2498326670159478703_n.png"/></a>
+  <text fill="#000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="1211.6" y="299.13793" id="svg_21" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.8333333134651184,0,0,0.90625,197.3333568572998,30.65625) " stroke="url(#svg_4)">2017</text>
+  <text fill="#000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="999" y="384" id="svg_23" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.9363183975219727,0,0,0.96875,62.1174231171608,12.25) " stroke="url(#svg_4)">2011</text>
+  <text fill="#000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="787" y="418.11438" id="svg_24" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.8564960117618757,0,0,0.9920267498158287,114.43763846563554,-9.34443422648415) " stroke="url(#svg_4)">2005</text>
+  <text fill="#000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="583" y="477" id="svg_29" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.9166666865348816,0,0,0.9615384340286255,46.58332222700119,18.538474798202515) " stroke="url(#svg_4)">2001</text>
+  <text fill="#000" stroke-width="0" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="371" y="533" id="svg_30" font-size="24" font-family="serif" text-anchor="middle" xml:space="preserve" transform="matrix(0.7789855016314462,0,0,0.9763313431358895,76.49637880662223,11.926045222748314) " stroke="url(#svg_4)">1992</text>
+  <rect fill="url(#svg_20)" stroke-width="2" stroke-dasharray="null" stroke-linejoin="null" stroke-linecap="null" x="1" y="610" width="1362.99992" height="9" id="svg_5" stroke="url(#svg_9)"/>
+ </g>
+</svg>
+      <!--SVG ends here -->
+    </div>
+  </div>
+    <script>
+    let $modal = document.querySelector('.modal-frame');
+    let $overlay = document.querySelector('.modal-overlay');
+      Array.from(document.querySelectorAll('.bar')).map((e)=>{
+        e.addEventListener('click',()=>{
+          $overlay.classList.add('state-show');
+          $modal.classList.remove('state-leave');
+          $modal.classList.add('state-appear');
+                  $modal.querySelector('.modal-body').innerHTML = `<h3>Welcome</h3>`
+
+        });
+      });
+
+      function close_modal() {
+          $overlay.classList.remove('state-show');
+          $modal.classList.remove('state-appear');
+          $modal.classList.remove('state-leave');
+          flag = 0;
+        }
+        document.querySelector('.close').addEventListener('click', close_modal);
+        window.addEventListener('keydown',(e)=>{
+          if (e.keyCode === 27) {
+            close_modal();
+          }
+        })
+    </script>
+</body>

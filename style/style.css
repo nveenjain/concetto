@@ -100,7 +100,7 @@ li div{
     font-size: 2rem;
     cursor: pointer;
     color:white;
-    background: linear-gradient(0deg, #2029FF 0%, #1473FF 30%, #1473FF 70%, #2029FF 100%);
+    background: linear-gradient(0deg, #597F7F 0%, #33FFFF 30%, #33FFFF 70%, #597F7F 100%);
 }
 .open1 span:hover, .open2 span:hover{
     cursor: pointer;
@@ -111,53 +111,6 @@ li div{
     /* background: black; */
     cursor:url('arrow.cur'),auto;
 }
-/* 
-.modal {
-    opacity: 0;
-    /* visibility: visible; */
-    /* display: none;  */
-    /* position: fixed; Stay in place */
-    /* z-index: 1; Sit on top */
-    /* left: 0; */
-    /* top: 0; */
-    /* width: 100%; Full width */
-    /* height: 100%; Full height */
-    /* overflow: auto; Enable scroll if needed */
-    /* background-color: rgb(0,0,0); Fallback color */
-    /* background-color: rgba(0,0,0,0.4); Black w/ opacity */
-    /* -webkit-transition: opacity 2s; */
-    /* -moz-transition: opacity 2s; */
-    /* transition: opacity 2s; */
-        /* background: url('/template.png'); */
-    /* background-repeat: no-repeat; */
-    /* background-size: 50%; */
-    /* background-attachment: fixed; */
-    /* background-position: center; */
-/* } */
-
-/* Modal Content/Box */
-/* .modal-content {
-
-    margin: 10% auto; /* 15% from the top and centered */
-    /* padding: 20px; */
-    /* border: 1px solid #888; */
-    /* width: 40%; Could be more or less, depending on screen size */
-/* }  */
-
-/* The Close Button */
-/* .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    cursor: pointer;
-} */
 
 /* starts here */
 
@@ -469,4 +422,61 @@ li div{
     -webkit-transform: translateY(35px) scale(0.97, 0.97);
     transform: translateY(35px) scale(0.97, 0.97);
   }
+}
+
+canvas{
+  display:block;
+  vertical-align:bottom;
+}
+
+
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: #000022;
+  position: absolute;
+  top: 48px;
+  left: 0;
+  width: 80px;
+  color: #13E8E9;
+  font-size: .8em;
+  text-align: left;
+  text-indent: 4px;
+  line-height: 14px;
+  padding-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: bold;
+}
+
+.js-count-particles{
+  font-size: 1.1em;
+}
+
+#stats,
+.count-particles{
+  -webkit-user-select: none;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+#stats{
+  border-radius: 3px 3px 0 0;
+  overflow: hidden;
+}
+
+.count-particles{
+  border-radius: 0 0 3px 3px;
+}
+
+
+/* ---- particles.js container ---- */
+
+#particles-js{
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  background-image: url('');
+  background-size: cover;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
 }

@@ -1,0 +1,112 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  color: #777;
+}
+#header{
+  box-sizing: border-box;
+  position: absolute;
+  left: 0; top: 0;
+  height: 50px;
+  min-width: 100%;
+  padding: 5px;
+}
+#contentWrap{
+  position: absolute;
+  left: 0; top: 50px;
+  box-sizing: border-box;
+  max-height: calc(100vh - 60px);
+  min-height: calc(100vh - 60px);
+  max-width: 100vw;
+  min-width: 100vw;
+  z-index: 0;
+}
+#content{
+  box-sizing: border-box;
+  font-size: 17px;
+  padding: 0;
+  position: absolute;
+  top: 60px; left: 0px;
+  z-index: 999;
+  max-width: 500px;
+  min-width: 500px;
+  max-height: 500px;
+  min-height: 500px;
+  overflow: hidden;
+  padding: 15px;
+  line-height: 20px;
+  border-radius: 2px;
+}
+#content img{
+  height: 20%;
+  width: 20%;
+  position: relative;
+  left: 40%; top: 50%;
+}
+/*.head{
+  color: #000;
+  margin-top: 0;
+  grid-area: head;
+  min-height: 30px;
+  max-height: 30px;
+  min-width: 20%;
+  max-width: 20%;
+  position: relative;
+  left: 10%;
+  box-sizing: border-box;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border: 2px solid #000;
+  border-bottom: none;
+  background: white;
+  font-weight: bold;
+  text-align: center;
+}*/
+
+h1{
+  color: #000;
+  font-family: monospace;
+  margin-left: 20px;
+}
+
+/*.hidden-class{
+  visibility: hidden;
+}
+.rotate-to-plane{
+  transition: 2500ms transform ease-in-out;
+  transform: rotateX(0deg);
+  transform-origin: bottom;
+}
+.rotate-from-plane{
+  transition: 2500ms transform ease-in-out;
+  transform: rotateX(30deg);
+  transform-origin: bottom;
+}
+body{
+  perspective: 300px;
+}
+*/
+rect{
+  transition: all 2s ease;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+line{
+  transform: scale(0, 0);
+  transition: all 2s ease;
+  transform-origin: bottom;
+}
+#svg_5{
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: all 2s ease;
+}
+
+ellipse{
+  transform: scale(0, 0);
+  transition: all 2s ease;
+  transform-origin: bottom;
+}

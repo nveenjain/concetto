@@ -198,7 +198,7 @@ function draw(department, icon){
     ctx.restore();
 
     ctx.font = '48px Spectral SC';
-    ctx.fillText(`${dept}`, 10, 50);
+    ctx.fillText(`${dept}`, width/2, 50);
 }
 //check collision
 async function check_collision(pointer){
