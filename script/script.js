@@ -166,7 +166,9 @@ function draw_initial(department, icon){
     
 
 }
-
+document.querySelector('#overlay').addEventListener('click', function(){
+    document.querySelector('#overlay').style.display = "none";
+});
 function draw(department, icon){
     let width = canvas.width;
     let height = canvas.height;
@@ -254,6 +256,8 @@ async function check_collision(pointer){
 function move(e) {
     if (e.keyCode === 27) {
         close_modal();  
+    }else if(e.keyCode === 32){
+        document.querySelector('#overlay').style.display = "none";        
     }
     if (!dept || flag)
         return;

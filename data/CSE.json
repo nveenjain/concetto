@@ -4,13 +4,13 @@
         "abstract":"This is the vdfxgvfdh",
         "coordinator":"Co-ordinator name",
         "organisers":"Organiser name",
-        "prize":"Amount"
+        "prize":"400"
     },
     "event2":{
         "title": "This is event2",
         "abstract": "This is the abstract",
         "coordinator": "Co-ordinator name",
         "organisers": "Organiser name",
-        "prize": "Amount"
+        "prize": "500"
     }
 }

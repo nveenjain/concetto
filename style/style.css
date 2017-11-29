@@ -2,6 +2,22 @@
     background: yellowgreen;
     text-shadow: 1px 1px 0 0;
 }
+#overlay {
+    position: fixed; /* Sit on top of the page content */
+    display: block; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:url('/img/main.jpg'); /* Black background with opacity */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    cursor: pointer; /* Add a pointer on hover */
+}
 body{
     margin:0;
     background:black;
@@ -12,7 +28,8 @@ a{
     text-decoration: none;
 }
 a:hover{
-    color:#AFAFAF
+    color:#AFAFAF;
+    text-decoration: line-through;
 }
 #main{
     display: flex;
